@@ -7,7 +7,7 @@
   <title>Train Schedule</title>
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
   <nav>
@@ -24,10 +24,11 @@
     <div class="container">
       <div class="row">
         <div class="col s12 m12">
-          <div class="card indigo darken-3">
+          <h3>Current Train Schedule</h3>
+          <!-- <div class="card blue darken-4">
             <div class="card-content white-text">
-              <span class="card-title">Current Train Schedule</span>
-              <table class="striped responsive-table">
+              <span class="card-title">Current Train Schedule</span> -->
+              <table class="responsive-table">
                 <thead>
                   <tr>
                     <th>Train Name</th>
@@ -39,28 +40,34 @@
                 </thead>
                 <tbody id="schedule-table"></tbody>
               </table>
-            </div>
-          </div> 
+            <!-- </div>
+          </div>  -->
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="Train Name" id="train-name" type="text" class="validate">
-          <label for="train-name">Train Name</label>
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="Destination" id="destination" type="text" class="validate">
-          <label for="destination">Destination</label>
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="HH:mm" id="first-time" type="text" class="validate">
-          <label for="first-time">First Train Time (HH:mm - military time)</label>
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="" id="frequency" type="number" class="validate">
-          <label for="frequency">Frequency (min)</label>
-        </div>
-        <button class="btn waves-effect waves-light" id="submit-button" type="submit" name="action">Submit</button>
+        <div class="col s12 m12">
+          <div class="card blue-grey darken-3">
+            <div class="card-content white-text">
+              <div class="input-field col s6">
+                <input placeholder="Train Name" id="train-name" type="text" class="validate">
+                <label for="train-name">Train Name</label>
+              </div>
+              <div class="input-field col s6">
+                <input placeholder="Destination" id="destination" type="text" class="validate">
+                <label for="destination">Destination</label>
+              </div>
+              <div class="input-field col s6">
+                <input placeholder="HH:mm" id="first-time" type="text" class="validate">
+                <label for="first-time">First Train Time (HH:mm - military time)</label>
+              </div>
+              <div class="input-field col s6">
+                <input placeholder="" id="frequency" type="number" class="validate">
+                <label for="frequency">Frequency (min)</label>
+              </div>
+              <button class="btn waves-effect waves-light" id="submit-button" type="submit" name="action">Submit</button>
+            </div>
+          </div>
+        </div>  
       </div>
     </div>
   </main>
@@ -72,6 +79,8 @@
   <!-- Compiled and minified JavaScript Materialize-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js"></script>
   <script src="./assets/javascript/script.js"></script>
 </body>
 </html>
