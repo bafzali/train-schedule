@@ -36,12 +36,7 @@ database.ref().orderByChild('dateAdded').on('child_added', function (snapshot) {
   // storing the snapshot.val() in a variable for convenience
   const sv = snapshot.val();
 
-  // Console.loging the last user's data
-  console.log(sv.trainName);
-  console.log(sv.destination);
-  const firstTime = JSON.stringify(sv.startTime);
-  console.log(firstTime);
-  console.log(sv.frequency);
+  // const firstTime = JSON.stringify(sv.startTime);
 
   // Calculate Minutes
   const firstTimeConverted = moment(sv.startTime, 'hh:mm').subtract(1, 'years');
@@ -77,11 +72,6 @@ database.ref().orderByChild('dateAdded').on('child_added', function (snapshot) {
   tRow.append(nameTd, destinationTd, frequencyTd, nextArrivalTd, minutesAwayTd);
   // Append the table row to the table body
   $('#schedule-table').append(tRow);
-
-  // $('#name-display').text(sv.name);
-  // $('#email-display').text(sv.email);
-  // $('#age-display').text(sv.age);
-  // $('#comment-display').text(sv.comment);
 
   // Handle the errors
 }, function (errorObject) {
