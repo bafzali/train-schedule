@@ -1,3 +1,7 @@
 body {
   background-image: url("../images/dust_scratches.png") 
 }
+
+input {
+  color: white;
+}

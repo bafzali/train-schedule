@@ -32,30 +32,26 @@ $('#submit-button').on('click', function (e) {
   $('#frequency').val('');
 });
 
+let minutesTilNext;
+let nextTrainTime;
+let currentTime;
+
 database.ref().orderByChild('dateAdded').on('child_added', function (snapshot) {
   // storing the snapshot.val() in a variable for convenience
   const sv = snapshot.val();
 
-  // const firstTime = JSON.stringify(sv.startTime);
-
   // Calculate Minutes
   const firstTimeConverted = moment(sv.startTime, 'hh:mm').subtract(1, 'years');
-  console.log(`Time entered: ${firstTimeConverted}`);
 
-  const currentTime = moment();
-  console.log(`Current time: ${currentTime}`);
+  // currentTime = moment();
 
   const diffTime = moment().diff(moment(firstTimeConverted), 'minutes');
-  console.log(`Difference in time: ${diffTime}`);
 
   const tRemainder = diffTime % sv.frequency;
-  console.log(tRemainder);
 
-  const minutesTilNext = sv.frequency - tRemainder;
-  console.log(`Minutes until train: ${minutesTilNext}`);
+  minutesTilNext = sv.frequency - tRemainder;
 
-  const nextTrainTime = moment().add(minutesTilNext, 'minutes');
-  console.log(`Arrival time: ${moment(nextTrainTime).format('hh:mm')}`);
+  nextTrainTime = moment().add(minutesTilNext, 'minutes');
 
   // Change the HTML to reflect
   const tRow = $('<tr>');
@@ -64,9 +60,6 @@ database.ref().orderByChild('dateAdded').on('child_added', function (snapshot) {
   const frequencyTd = $('<td>').text(sv.frequency);
   const nextArrivalTd = $('<td>').text(moment(nextTrainTime).format('hh:mm'));
   const minutesAwayTd = $('<td>').text(minutesTilNext);
-
-  // const rateTd = $('<td>').text(sv.rate);
-  // const monthsTd = $('<td>').text(duration);
 
   // Append the newly created table data to the table row
   tRow.append(nameTd, destinationTd, frequencyTd, nextArrivalTd, minutesAwayTd);
